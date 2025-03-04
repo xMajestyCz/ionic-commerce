@@ -1,0 +1,58 @@
+ion-badge{
+    position: absolute;
+    top: 8px;
+    right: 28px;
+    border-radius: 40%;
+    background-color: red;
+    color: white;
+    z-index: 1;
+    cursor: default;
+}
+ion-card{
+    max-width: 30rem;
+    justify-self: center;
+}
+ion-card-title{
+    font-size: 1.8rem;
+    padding: 1rem;
+    font-weight: 700;
+}
+.category-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.category-price ion-card-subtitle:nth-child(2){
+    font-size: 1.5rem;
+}
+.description-tittle{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.description{
+    font-size: 1rem;
+}
+.rating-top{
+    display: flex;
+    justify-content: space-around;
+}
+.rating{
+    display: flex;
+    align-items: center;
+}
+.rating-top ion-card-content{
+    font-size: 1.5rem;
+}
+#headerAnchor{
+    font-size: 1rem;
+    font-weight: bold;
+    height: 3rem;
+    width: 100%;
+}
+ion-toast{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    --background: #46b1ff;
+    color: #000;
+}

@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item>
+      <ion-title>Mi Tienda Virtual</ion-title>
+      <ion-badge slot="end">{{ cartItemCount }}</ion-badge>
+      <ion-button (click)="navigateToCart()" color="light" fill="clear" size="large">
+        <ion-icon name="cart-outline" color="primary" size="large"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="order">
+      <ion-label>Order</ion-label>
+    </div>
+    <div class="asc-desc">
+      <ion-button color="light" fill="outline" (click)="sortProducts('asc')">Asc</ion-button>
+      <ion-button color="light" fill="outline" (click)="sortProducts('desc')">Desc</ion-button>
+    </div>
+  <ion-accordion-group expand="inset">
+    <ion-accordion value="first">
+      <ion-item slot="header" color="rose" class="category">
+        <ion-label class="accordion-header">{{ selectedCategory }}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content" *ngFor="let category of categories" (click)="filterByCategory(category)">{{ category }}</div>
+      <div class="ion-padding" slot="content" (click)="filterByCategory('Category')">Category</div>
+    </ion-accordion>
+  </ion-accordion-group>
+    <div class="product-grid">
+      <ion-card *ngFor="let item of productsList$ | async" (click)="goToDetail(item.id)">
+        <img [src]="item.image" alt="{{ item.title }}" />
+        <ion-card-header>
+          <ion-card-title>{{ item.title }}</ion-card-title>
+          <ion-card-subtitle>{{ item.category }}</ion-card-subtitle>
+          <div class="rating">
+            <ion-card-subtitle>{{ item.rating.rate }}</ion-card-subtitle>
+            <ion-icon name="star-sharp"></ion-icon>
+          </div>
+        </ion-card-header>
+        <ion-card-content>${{ item.price }}</ion-card-content>
+      </ion-card>
+    </div>
+</ion-content>

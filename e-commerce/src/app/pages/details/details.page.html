@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Mi Tienda Virtual</ion-title>
+      <ion-badge slot="end">{{ cartItemCount }}</ion-badge>
+      <ion-button color="light" fill="clear" size="large" (click)="navigateToCart()">
+        <ion-icon name="cart-outline" color="primary" size="large"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="product">
+  <ion-card>
+    <ion-card-title>{{ product.title }}</ion-card-title>
+    <img [src]="product.image" alt="{{ product.title }}" />
+    <ion-card-header>
+      <div class="category-price">
+        <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
+        <ion-card-subtitle>${{ product.price }}</ion-card-subtitle>
+      </div>
+    </ion-card-header>
+    <ion-card-content class="description-tittle">Description</ion-card-content>
+    <ion-card-content class="description">{{ product.description }}</ion-card-content>
+    <div class="rating-top">
+      <ion-card-content>Brought: {{ product.rating.count }}+</ion-card-content>
+      <div class="rating">
+        <ion-card-content>{{ product.rating.rate }}</ion-card-content>
+        <ion-icon name="star-sharp"></ion-icon>
+      </div>
+    </div>
+    <ion-button (click)="addToCart()" id="headerAnchor">Add to cart</ion-button>
+    <ion-toast
+      trigger="headerAnchor"
+      position="top"
+      positionAnchor="header"
+      message="Added with succes"
+      duration="1000"
+    ></ion-toast>
+  </ion-card>
+</ion-content>
+
+
