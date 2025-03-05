@@ -1,0 +1,25 @@
+ion-col{
+    display: flex;
+    flex-direction: column;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+ion-col ion-label:last-child, .flex ion-label:first-child{
+    color: #9c9999;
+}
+h1, ion-label{
+    margin-left: 1rem;
+}
+.flex ion-label{
+    margin-left: 1.5rem;
+}
+#headerAnchor{
+    position: absolute;
+    width: 99%;
+    bottom: 0;
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: 500;
+}

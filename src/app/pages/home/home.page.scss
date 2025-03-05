@@ -1,3 +1,12 @@
+.fade-content {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}  
+.show-content {
+    opacity: 1;
+    transform: translateY(0);
+}  
 ion-badge{
     position: absolute;
     top: 8px;
@@ -12,8 +21,9 @@ ion-badge{
     padding: 1rem 0 0 1rem;
 }
 .asc-desc{
-    //hacer un hover
+    color: white;
     padding: 1rem 0 0 1rem;
+    transition: .3s ease;
 }
 ion-accordion.accordion-expanding,
 ion-accordion.accordion-expanded {
@@ -31,8 +41,6 @@ ion-accordion-group{
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
-    padding: 0 20px 0 0;
 }
 ion-card{
     cursor: pointer;
@@ -47,6 +55,7 @@ ion-card:hover {
 }
 img{
     min-height: 200px;
+    max-height: 200px;
     width: 100%;
 }
 ion-card-title {

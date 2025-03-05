@@ -4,9 +4,14 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
-      <ion-title>Mi Tienda Virtual</ion-title>
+      <ion-title>SnapBuy</ion-title>
       <ion-badge slot="end">{{ cartItemCount }}</ion-badge>
-      <ion-button color="light" fill="clear" size="large" (click)="navigateToCart()">
+      <ion-button 
+        (click)="navigateToCart()" 
+        color="light" 
+        fill="clear" 
+        size="large"
+        [disabled]="cartItemCount === 0">
         <ion-icon name="cart-outline" color="primary" size="large"></ion-icon>
       </ion-button>
     </ion-item>
@@ -33,13 +38,15 @@
       </div>
     </div>
     <ion-button (click)="addToCart()" id="headerAnchor">Add to cart</ion-button>
+    <ng-container>
     <ion-toast
       trigger="headerAnchor"
       position="top"
       positionAnchor="header"
-      message="Added with succes"
-      duration="1000"
-    ></ion-toast>
+      message="Added with succes!"
+      duration="1000">
+    </ion-toast>
+  </ng-container>
   </ion-card>
 </ion-content>
 

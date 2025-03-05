@@ -11,7 +11,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
   standalone: false,
 })
 export class HomePage implements OnInit {
-
+  isLoading = true;
   private allProducts: any[] = [];
   private filteredProducts$ = new BehaviorSubject<any[]>([]); 
   productsList$: Observable<any[]> = this.filteredProducts$.asObservable(); 
@@ -19,7 +19,11 @@ export class HomePage implements OnInit {
   selectedCategory: string = 'Category';
   cartItemCount: number = 0;
 
-  constructor(private router: Router, private httpService: HttpService, private cartService: CartService) { }
+  constructor(private router: Router, private httpService: HttpService, private cartService: CartService) {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
+  }
 
   ngOnInit() {
     this.getProducts();

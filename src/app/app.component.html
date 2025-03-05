@@ -1,3 +1,6 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<div *ngIf="isLoading" class="loading-overlay">
+  <ion-spinner name="crescent"></ion-spinner>
+  <p>Loading...</p>
+</div>
+
+<ion-router-outlet></ion-router-outlet>

@@ -3,7 +3,6 @@
 .item3 { grid-area: item3; }
 .item4 { grid-area: item4; }
 .item5 { grid-area: item5; }
-
 .grid {
     display: grid;
     grid-template-areas: 
@@ -18,10 +17,11 @@ ion-item{
 }
 ion-thumbnail{
     height: 100%;
-    min-width: 120px;
+    min-width: 90px;
+    max-width: 100px;
 }
 .item1{
-    max-width: 115px;
+    max-width: 100px;
     word-wrap: break-word;
 }
 ion-content:last-child{

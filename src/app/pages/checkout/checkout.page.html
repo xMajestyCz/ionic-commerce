@@ -3,81 +3,84 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Mi tienda Virtual</ion-title>
+    <ion-title>SnapBuy</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Personal information</h1>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-input label="Name" label-placement="floating" fill="outline" placeholder="Jane"></ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input label="Last Name" label-placement="floating" fill="outline" placeholder="Doe"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-input label="Country" label-placement="floating" fill="outline" placeholder="Colombia"></ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input label="City" label-placement="floating" fill="outline" placeholder="Cartagena"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-input label="Address" label-placement="floating" fill="outline" placeholder="Los caracoles cll 26-124"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <h1>Payment information</h1>
-  <ion-row>
-    <ion-col>
-      <ion-input label="Enter Your Bank Account Number" label-placement="floating" fill="outline" placeholder="0123456789"></ion-input>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-input label="CVC" label-placement="floating" fill="outline" placeholder="123"></ion-input>
-    </ion-col>
-    <ion-col>
-      <ion-input 
-      label="Due Date" 
-      label-placement="floating" 
-      fill="outline" 
-      placeholder="12/34" 
-      id="click-trigger" 
-      [(ngModel)]="selectedDate">
-      </ion-input>
-      <ion-popover trigger="click-trigger" side="top" alignment="center"triggerAction="click">
-        <ng-template>
-          <ion-content class="ion-padding">
-            <ion-datetime 
-              presentation="month-year"
-              [(ngModel)]="selectedDate"
-              (ionChange)="updateDate($event)">
-            </ion-datetime>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-    </ion-col>
-    <ion-col>
-      <div class="flex">
-        <ion-label>Total</ion-label>
-        <ion-label>${{ cartTotal.toFixed(2) }}</ion-label>
-      </div>
-    </ion-col>
-  </ion-row>
-  <div class="footer">
-    <ion-button id="headerAnchor">Payment</ion-button>
-    <ion-toast
-      trigger="headerAnchor"
-      position="top"
-      positionAnchor="header"
-      message="Proccesing payment"
-      duration="1000"
-    ></ion-toast>
-  </div>
+  <form #form="ngForm" method="post">
+    <h1>Personal information</h1>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input name="name" [(ngModel)]="formData.name" label="Name" label-placement="floating" fill="outline" placeholder="Jane" required></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input name="lastName" [(ngModel)]="formData.lastName" label="Last Name" label-placement="floating" fill="outline" placeholder="Doe" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input name="country" [(ngModel)]="formData.country" label="Country" label-placement="floating" fill="outline" placeholder="Colombia" required></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input name="city" [(ngModel)]="formData.city" label="City" label-placement="floating" fill="outline" placeholder="Cartagena" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input name="address" [(ngModel)]="formData.address" label="Address" label-placement="floating" fill="outline" placeholder="Los caracoles cll 26-124" required></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <h1>Payment information</h1>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input name="bankAccount" [(ngModel)]="formData.bankAccount" label="Bank Account Number" label-placement="floating" fill="outline" placeholder="0123456789" type="number" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input name="cvc" [(ngModel)]="formData.cvc" label="CVC" label-placement="floating" fill="outline" placeholder="123" type="number" required></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input 
+            name="dueDate"
+            label="Due Date" 
+            label-placement="floating" 
+            fill="outline" 
+            placeholder="12/34" 
+            id="click-trigger" 
+            [(ngModel)]="formData.dueDate"
+            readonly="true"
+            required>
+          </ion-input>
+          <ion-popover trigger="click-trigger" side="top" alignment="center" triggerAction="click">
+            <ng-template>
+              <ion-content class="ion-padding">
+                <ion-datetime 
+                  name="dueDatePicker"
+                  max="2050"
+                  presentation="month-year"
+                  (ionChange)="updateDate($event)">
+                </ion-datetime>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
+        </ion-col>
+        <ion-col>
+          <div class="flex">
+            <ion-label>Total</ion-label>
+            <ion-label>${{ cartTotal.toFixed(2) }}</ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="footer">
+      <ion-button id="headerAnchor" (click)="goToPayment()" [disabled]="form.invalid">Payment</ion-button>
+      <ion-loading class="custom-loading" spinner="crescent" [duration]="3000"></ion-loading>
+    </div>
+  </form>
 </ion-content>

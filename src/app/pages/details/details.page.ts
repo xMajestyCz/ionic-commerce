@@ -30,6 +30,10 @@ export class DetailsPage implements OnInit {
 
   navigateToCart() {
     this.router.navigate(['/cart']);
+    
+    setTimeout(() => {
+      (document.activeElement as HTMLElement)?.blur();
+    }, 0);
   }
 
   addToCart() {

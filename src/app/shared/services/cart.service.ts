@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root'
 })
 export class CartService {
-    private cartItems = new BehaviorSubject<any[]>([]);
+    private cartItems = new BehaviorSubject<any[]>(this.loadCart()); 
     cartItems$ = this.cartItems.asObservable();
 
     private cartCount = new BehaviorSubject<number>(0);
@@ -14,6 +14,15 @@ export class CartService {
     private cartTotal = new BehaviorSubject<number>(0);
     cartTotal$ = this.cartTotal.asObservable();
 
+    private loadCart(): any[] {
+        return JSON.parse(localStorage.getItem('cartItems') || '[]'); 
+    }
+
+    private saveCart(items: any[]) {
+        localStorage.setItem('cartItems', JSON.stringify(items)); 
+        this.updateTotals(items);
+    }
+    
     private updateTotals(items: any[]) {
         this.cartCount.next(items.reduce((acc, item) => acc + item.quantity, 0));
         this.cartTotal.next(items.reduce((acc, item) => acc + item.totalPrice, 0));
@@ -34,13 +43,13 @@ export class CartService {
         }
 
         this.cartItems.next([...items]);
-        this.updateTotals(items);
+        this.saveCart(items); 
     }
 
     decreaseQuantity(product: any) {
         let items = this.cartItems.getValue();
         const existingProduct = items.find(item => item.id === product.id);
-    
+
         if (existingProduct) {
             if (existingProduct.quantity > 1) {
                 existingProduct.quantity -= 1;
@@ -51,7 +60,13 @@ export class CartService {
         }
 
         this.cartItems.next([...items]);
-        this.updateTotals(items); 
+        this.saveCart(items); 
+    }
+
+    clearCart() {
+        this.cartItems.next([]);
+        localStorage.removeItem('cartItems'); 
+        this.updateTotals([]);
     }
 
     getCartItems() {

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute  } from '@angular/router';
+import { CartService } from 'src/app/shared/services/cart.service';
+
 
 @Component({
   selector: 'app-payment',
@@ -7,10 +10,22 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class PaymentPage implements OnInit {
-
-  constructor() { }
+  formData: any = {};
+  cartTotal: number = 0;
+  
+  constructor(private router: Router, private route: ActivatedRoute, private cartService: CartService) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.formData = params;
+    });
+    this.cartService.cartTotal$.subscribe(total => {
+      this.cartTotal = total;
+    });
   }
 
+  goToHome(){
+    this.cartService.clearCart(); 
+    return this.router.navigate(['/home']);
+  }
 }

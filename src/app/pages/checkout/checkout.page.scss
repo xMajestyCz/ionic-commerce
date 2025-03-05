@@ -1,3 +1,6 @@
+h1{
+    margin-left: 1rem;
+}
 .flex{
     display: flex;
     flex-direction: column;
@@ -5,15 +8,15 @@
 .footer{
     width: 100%;
 }
-// #headerAnchor{
-//     position: absolute;
-//     width: 99%;
-//     bottom: 0;
-// }
-ion-toast{
-    text-align: center;
+#headerAnchor{
+    position: absolute;
+    width: 99%;
+    bottom: 0;
+    height: 3rem;
     font-size: 1rem;
-    font-weight: 600;
-    --background: #46b1ff;
-    color: #000;
+    font-weight: 500;
+}
+.custom-loading{
+    backdrop-filter: blur(2px);
+    --background: transparent;
 }
