@@ -14,7 +14,7 @@ aplicación e-commerce con ionic que permite gestionar listado de productos, fil
 - **Angular**
 - **TypeScript**
 - **Local Storage** para persistencia de datos
-- **Fake Store API** (API REST para obtener datos)
+- **FakeStoreAPI** (API para obtener datos)
 
 - ## Instalación y ejecución
 
@@ -32,11 +32,11 @@ aplicación e-commerce con ionic que permite gestionar listado de productos, fil
 
 ## Uso de la Aplicación 📱✨
 
-**Explorar Productos** Navega entre diferentes categorías y consulta los productos disponibles.
-**Agregar al Carrito** Selecciona un producto y agrégalo al carrito.
-**Gestionar el Carrito** Revisa los productos añadidos, ajusta cantidades o elimina productos.
-**Realizar Pago** Procede a la pantalla de pago y confirma tu compra.
-**Finalizar Pedido** Una vez completado el pago, el carrito se vacía automáticamente.
+- **Explorar Productos** Navega entre diferentes categorías y consulta los productos disponibles.
+- **Agregar al Carrito** Selecciona un producto y agrégalo al carrito.
+- **Gestionar el Carrito** Revisa los productos añadidos, ajusta cantidades o elimina productos.
+- **Realizar Pago** Procede a la pantalla de pago y confirma tu compra.
+- **Finalizar Pedido** Una vez completado el pago, el carrito se vacía automáticamente.
 
 ## 📜 API utilizada
 
