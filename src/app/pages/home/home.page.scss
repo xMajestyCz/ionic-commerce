@@ -75,3 +75,6 @@ ion-card-content{
     font-size: 1rem;
     color: aliceblue;
 }
+ion-content::part(scroll) {
+    padding-bottom: 0 !important;
+} 
