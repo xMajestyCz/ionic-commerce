@@ -38,7 +38,9 @@ aplicación e-commerce con ionic que permite gestionar listado de productos, fil
 - **Realizar Pago** Procede a la pantalla de pago y confirma tu compra.
 - **Finalizar Pedido** Una vez completado el pago, el carrito se vacía automáticamente.
 
-## 📜 API utilizada
+## API utilizada 📜
 
 Este proyecto utiliza [FakeStoreAPI](https://fakestoreapi.com) para obtener los datos de los productos
 
+## Enlace de demostración 🔗
+[ionic-commerce.vercel.app](https://ionic-commerce.vercel.app/)
